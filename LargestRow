@@ -1,0 +1,83 @@
+
+public class Solution {
+
+	
+	public static void findLargest(int arr[][]){
+		
+		/* Your class should be named Solution.
+		* Don't write main() function.
+	 	* Don't read input, it is passed as function argument.
+	 	* Print output as specified in the question
+		*/
+        int r=Integer.MIN_VALUE,c=Integer.MIN_VALUE;
+         int x=0,y=0;
+        int row=arr.length;
+        int col=arr[0].length;
+        for(int i=0;i<row;i++){
+            int rowSum=0;
+            for(int j=0;j<col;j++){
+              
+                rowSum=rowSum+arr[i][j];
+                
+            }
+            
+            if(rowSum>r){
+                r=rowSum;
+                x=i;
+            }
+        }
+        
+        for(int j=0;j<col;j++){
+           int colSum=0;
+            for(int i=0;i<row;i++){
+                colSum=colSum+arr[i][j];
+                
+            }
+            if(colSum>c){
+                c=colSum;
+                y=j;
+            }
+        }
+        
+        if(r>=c){
+            System.out.print("row "+x+ " "+r);
+        }
+        else{
+            System.out.print("column "+y+" "+c);
+        }
+
+	}
+
+	
+import java.util.Scanner;
+
+
+public class Runner {
+	
+	static Scanner s = new Scanner(System.in);
+	
+	
+	public static int[][] takeInput2D(){
+		
+		int numRows = s.nextInt();
+		int numCols = s.nextInt();
+		int[][] input = new int[numRows][numCols];
+		for(int i = 0; i < numRows; i++){
+			for(int j = 0; j < numCols; j++){
+				input[i][j] = s.nextInt();
+			}
+		}
+		return input;
+	}
+	
+	
+	public static void main(String[] args) {
+	
+		int input[][] = takeInput2D();
+		Solution.findLargest(input);
+		
+	}
+
+}
+
+}
